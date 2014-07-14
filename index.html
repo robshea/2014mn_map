@@ -6,7 +6,7 @@
       html { height: 100% }
       body { height: 100%; margin: 0; padding: 0 }
       #map-canvas { height: 100% }
-      h1 { font-size: 14pt; font-weight: bold; }
+      h1 { font-size: 12pt; font-weight: bold; }
       .info { width: 250px; }
     </style>
     <script type="text/javascript"
@@ -40,6 +40,7 @@
           anchor: new google.maps.Point(16,37)
         };
 
+        /* map options */
         var mapOptions = {
           center: new google.maps.LatLng(43.002803, -85.670164),
           zoom: 13,
@@ -71,7 +72,7 @@
         race.setMap(map);
 
         /* info window */
-        var trailerEntranceString = '<div class="info">'+
+        var copyMonroeKnappEntrance = '<div class="info">'+
         '<h1>Shell Trailer Entrance</h1>'+
         '<p>Trailers should enter through the park entrance at Monroe and Knapp Streets. '+
         'Follow signs to the shell laydown areas. '+
@@ -79,19 +80,19 @@
         'We do not recommend parking in the adjacent neighborhood to the east.</p>'+
         '</div>';
 
-        var cartopEntranceString = '<div class="info">'+
-        '<h1>Shell Cartop Entrance</h1>'+
+        var copyMonroeGuildEntrance = '<div class="info">'+
+        '<h1>Shell Cartop, Trailers &amp; Officials Entrance</h1>'+
         '<p>Cartops should enter through the park entrance at Monroe and Guild Streets. '+
         'Follow the signs to their parking area. '+
         'Please display your parking pass as you enter the park. '+
         'We do not recommend parking in the adjacent neighborhood to the east.</p>'+
         '</div>';
 
-        var trailerEntranceInfo = new google.maps.InfoWindow({
-          content: trailerEntranceString
+        var infoMonroeKnappEntrance = new google.maps.InfoWindow({
+          content: copyMonroeKnappEntrance
         });
-        var cartopEntranceInfo = new google.maps.InfoWindow({
-          content: cartopEntranceString
+        var infoMonroeGuildEntrance = new google.maps.InfoWindow({
+          content: copyMonroeGuildEntrance
         });
 
         /* simple markers */
@@ -107,13 +108,13 @@
           map: map,
           title: 'Course Finish'
         });
-        var cartopMarker = new google.maps.Marker({
+        var markerMonroeGuild = new google.maps.Marker({
           icon: SUVImage,
           position: new google.maps.LatLng(43.006367, -85.668347),
           map: map,
           title: 'Shell Cartop Parking Entrance'
         });
-        var trailerMarker = new google.maps.Marker({
+        var markerMonroeKnapp = new google.maps.Marker({
           icon: SUVImage,
           position: new google.maps.LatLng(42.99923, -85.670504),
           map: map,
@@ -157,11 +158,11 @@
         });
 
         /* info window listeners */
-        google.maps.event.addListener(cartopMarker, 'click', function() {
-          cartopEntranceInfo.open(map,cartopMarker);
+        google.maps.event.addListener(markerMonroeGuild, 'click', function() {
+          infoMonroeGuildEntrance.open(map,markerMonroeGuild);
         });
-        google.maps.event.addListener(trailerMarker, 'click', function() {
-          trailerEntranceInfo.open(map,trailerMarker);
+        google.maps.event.addListener(markerMonroeKnapp, 'click', function() {
+          infoMonroeKnappEntrance.open(map,markerMonroeKnapp);
         });
 
       }
