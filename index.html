@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+      html { height: 100% }
+      body { height: 100%; margin: 0; padding: 0 }
+      #map-canvas { height: 100% }
+      h1 { font-size: 14pt; font-weight: bold; }
+      .info { width: 250px; }
+    </style>
+    <script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDAS109WY45p8X5IKHhbRBJKjyripv6gI4">
+    </script>
+    <script type="text/javascript">
+      function initialize() {
+        /* custom markers */
+        var ParkAndRideImage = {
+          url: '/img/parkandride.png',
+          size: new google.maps.Size(32, 37),
+          origin: new google.maps.Point(0,0),
+          anchor: new google.maps.Point(16,37)
+        };
+        var RowBoatImage = {
+          url: '/img/rowboat.png',
+          size: new google.maps.Size(32, 37),
+          origin: new google.maps.Point(0,0),
+          anchor: new google.maps.Point(16,37)
+        };
+        var CautionImage = {
+          url: '/img/caution.png',
+          size: new google.maps.Size(32, 37),
+          origin: new google.maps.Point(0,0),
+          anchor: new google.maps.Point(16,37)
+        };
+        var SUVImage = {
+          url: '/img/sportutilityvehicle.png',
+          size: new google.maps.Size(32, 37),
+          origin: new google.maps.Point(0,0),
+          anchor: new google.maps.Point(16,37)
+        };
+
+        var mapOptions = {
+          center: new google.maps.LatLng(43.002803, -85.670164),
+          zoom: 13,
+          panControl: true,
+          zoomControl: true,
+          scaleControl: true
+        };
+        var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+
+        // Define the LatLng coordinates for the polygon's path.
+        var raceCoords = [
+        new google.maps.LatLng(43.008000, -85.673636),
+        new google.maps.LatLng(43.008000, -85.672595),
+        new google.maps.LatLng(42.999000, -85.672735),
+        new google.maps.LatLng(42.999000, -85.673786),
+        new google.maps.LatLng(43.008000, -85.673636)
+        ];
+        var race;
+        // Construct the polygon.
+        race = new google.maps.Polygon({
+          paths: raceCoords,
+          strokeColor: '#FF3300',
+          strokeOpacity: 0.8,
+          strokeWeight: 2,
+          fillColor: '#FF3300',
+          fillOpacity: 0.35
+        });
+        race.setMap(map);
+
+        /* info window */
+        var trailerEntranceString = '<div class="info">'+
+        '<h1>Shell Trailer Entrance</h1>'+
+        '<p>Trailers should enter through the park entrance at Monroe and Knapp Streets. '+
+        'Follow signs to the shell laydown areas. '+
+        'Please display your parking pass as you enter the park. '+
+        'We do not recommend parking in the adjacent neighborhood to the east.</p>'+
+        '</div>';
+
+        var cartopEntranceString = '<div class="info">'+
+        '<h1>Shell Cartop Entrance</h1>'+
+        '<p>Cartops should enter through the park entrance at Monroe and Guild Streets. '+
+        'Follow the signs to their parking area. '+
+        'Please display your parking pass as you enter the park. '+
+        'We do not recommend parking in the adjacent neighborhood to the east.</p>'+
+        '</div>';
+
+        var trailerEntranceInfo = new google.maps.InfoWindow({
+          content: trailerEntranceString
+        });
+        var cartopEntranceInfo = new google.maps.InfoWindow({
+          content: cartopEntranceString
+        });
+
+        /* simple markers */
+        var startMarker = new google.maps.Marker({
+          icon: RowBoatImage,
+          position: new google.maps.LatLng(43.008000, -85.673115),
+          map: map,
+          title: 'Course Start'
+        });
+        var finishMarker = new google.maps.Marker({
+          icon: RowBoatImage,
+          position: new google.maps.LatLng(42.999000, -85.673260),
+          map: map,
+          title: 'Course Finish'
+        });
+        var cartopMarker = new google.maps.Marker({
+          icon: SUVImage,
+          position: new google.maps.LatLng(43.006367, -85.668347),
+          map: map,
+          title: 'Shell Cartop Parking Entrance'
+        });
+        var trailerMarker = new google.maps.Marker({
+          icon: SUVImage,
+          position: new google.maps.LatLng(42.99923, -85.670504),
+          map: map,
+          title: 'Shell Trailer Parking Entrance'
+        });
+        var DashLotArea9Marker = new google.maps.Marker({
+          icon: ParkAndRideImage,
+          position: new google.maps.LatLng(42.968528,-85.682175),
+          map: map,
+          title: 'Dash Lot Area 9 Parking ($5/day)'
+        });
+        var ScribnerMarker = new google.maps.Marker({
+          icon: ParkAndRideImage,
+          position: new google.maps.LatLng(42.968515,-85.678012),
+          map: map,
+          title: 'Scribner Parking ($5/day)'
+        });
+        var IoniaMasonMarker = new google.maps.Marker({
+          icon: ParkAndRideImage,
+          position: new google.maps.LatLng(42.9779958,-85.6692774),
+          map: map,
+          title: 'Ionia Mason Parking ($5/day)'
+        });
+        var GovtCenterParkingMarker = new google.maps.Marker({
+          icon: ParkAndRideImage,
+          position: new google.maps.LatLng(42.9692618,-85.6715355),
+          map: map,
+          title: 'Government Center Parking ($8/day)'
+        });
+        var DevosMarker = new google.maps.Marker({
+          icon: ParkAndRideImage,
+          position: new google.maps.LatLng(42.96916,-85.673216),
+          map: map,
+          title: 'Devos Place Convention Center Parking ($8/day)'
+        });
+        var LuisCampauMarker = new google.maps.Marker({
+          icon: ParkAndRideImage,
+          position: new google.maps.LatLng(42.964430, -85.672573),
+          map: map,
+          title: 'Luis-Campau Ramp Parking ($8/day)'
+        });
+
+        /* info window listeners */
+        google.maps.event.addListener(cartopMarker, 'click', function() {
+          cartopEntranceInfo.open(map,cartopMarker);
+        });
+        google.maps.event.addListener(trailerMarker, 'click', function() {
+          trailerEntranceInfo.open(map,trailerMarker);
+        });
+
+      }
+      google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+  </head>
+  <body>
+    <div id="map-canvas"/>
+  </body>
+</html>
