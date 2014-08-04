@@ -70,99 +70,195 @@
           fillOpacity: 0.35
         });
         race.setMap(map);
-
+          
+        /* titles */
+        var titleMonroeKnapp = "Shell Trailer Entrance";
+        var titleMonroeGuild = "Shell Cartop, Trailers, Officials & Volunteers Entrance";
+        var titleDashLotArea9 = "Dash Lot Area 9 Park & Ride";
+        var titleScribner = "Scribner Parking Park & Ride";
+        var titleIoniaMason = "Ionia Mason Park & Ride";
+        var titleGovtCenter = "Government Center Park & Ride";
+        var titleDevos = "Devos Place Convention Center Park & Ride";
+        var titleLuisCampau = "Luis-Campau Ramp Park & Ride";
+        
+        /* directions */
+        var directionsMonroeKnapp = "https://www.google.com/maps/place/2000+Monroe+Ave+NW,+Grand+Rapids,+MI+49505/@42.9991668,-85.6703641,17z/data=!3m1!4b1!4m2!3m1!1s0x8819ac1693670b1d:0x8ed993b72da14204";
+        var directionsMonroeGuild = "https://www.google.com/maps/place/2400+Monroe+Ave+NE,+Grand+Rapids,+MI+49505/@43.0065514,-85.6678948,17z/data=!3m1!4b1!4m2!3m1!1s0x8819ac0deb51d5af:0xcab487d8b484ebdc";
+        var directionsDashLotArea9 = "https://www.google.com/maps/place/Dash+Lot+Area+9/@42.968369,-85.682248,17z/data=!3m1!4b1!4m2!3m1!1s0x8819add74aff42f3:0xb9c9d373862d01a2";
+        var directionsScribner = "https://www.google.com/maps/place/284+Scribner+Ave+NW/@42.968515,-85.678012,17z/data=!4m2!3m1!1s0x8819add0ead6e02f:0xcb0b069e7cd7951c";
+        var directionsIoniaMason = "https://www.google.com/maps/place/967+Ionia+Ave+NW/@42.9779955,-85.6692958,19z/data=!3m1!4b1!4m2!3m1!1s0x8819ac335864f82f:0x31bbb945d3c0fe54";
+        var directionsGovtCenter = "https://www.google.com/maps/place/300+Monroe+Ave+NW,+Grand+Rapids,+MI+49503/@42.9692618,-85.6715355,18z/data=!3m1!4b1!4m2!3m1!1s0x8819adcf0108c147:0x619b153f60d55abe";
+        var directionsDevos = "https://www.google.com/maps/place/DeVos+Place+convention+center/@42.96916,-85.673216,17z/data=!3m2!4b1!5s0x8819adcfa5ebfacb:0x2b0cd76aca46d900!4m2!3m1!1s0x8819adcfc670bfed:0xb8b33a8dfa80a429";
+        var directionsLuisCampau = "https://www.google.com/maps/place/Louis-Campau+Ramp/@42.96468,-85.672952,17z/data=!3m1!4b1!4m6!1m3!3m2!1s0x8819adc51fc22b79:0xe7b379d36a2fecbc!2sLouis-Campau+Ramp!3m1!1s0x0:0xe7b379d36a2fecbc";
+        
         /* info window */
-        var copyMonroeKnappEntrance = '<div class="info">'+
-        '<h1>Shell Trailer Entrance</h1>'+
-        '<p>Trailers should enter through the park entrance at Monroe and Knapp Streets. '+
+        var copyMonroeKnapp = '<div class="info">'+
+        '<h1>' + titleMonroeKnapp + '</h1>'+
+        '<p>Enter at Monroe Ave. and Knapp St. '+
+        'Receive pass at entrance. '+
         'Follow signs to the shell laydown areas. '+
-        'Please display your parking pass as you enter the park. '+
+        'Display your parking pass as you enter the park. '+
         'We do not recommend parking in the adjacent neighborhood to the east.</p>'+
+        '<p><a href="' + directionsMonroeKnapp + '">Directions</a></p>'+
         '</div>';
 
-        var copyMonroeGuildEntrance = '<div class="info">'+
-        '<h1>Shell Cartop, Trailers &amp; Officials Entrance</h1>'+
-        '<p>Cartops should enter through the park entrance at Monroe and Guild Streets. '+
+        var copyMonroeGuild = '<div class="info">'+
+        '<h1>' + titleMonroeGuild + '</h1>'+
+        '<p>Enter at Monroe Ave. and Guild St. '+
+        'Receive pass at entrance. Cartops must have shell on car to get pass. '+
         'Follow the signs to their parking area. '+
-        'Please display your parking pass as you enter the park. '+
+        'Display your parking pass as you enter the park. '+
         'We do not recommend parking in the adjacent neighborhood to the east.</p>'+
+        '<p><a href="' + directionsMonroeGuild + '">Directions</a></p>'+
         '</div>';
+          
+        var copyDashLotArea9 = '<div class="info">'+
+        '<h1>' + titleDashLotArea9 + '</h1>'+
+        '<p>Parking $5 per day</p>'+
+        '<p>Free shuttle to Riverside Park</p>'+
+        '<p><a href="' + directionsDashLotArea9 + '">Directions</a></p></div>';
 
-        var infoMonroeKnappEntrance = new google.maps.InfoWindow({
-          content: copyMonroeKnappEntrance
+        var copyScribner = '<div class="info">'+
+        '<h1>' + titleScribner + '</h1>'+
+        '<p>Parking $5 per day</p>'+
+        '<p>Free shuttle to Riverside Park</p>'+
+        '<p><a href="' + directionsScribner + '">Directions</a></p></div>';
+
+        var copyIoniaMason = '<div class="info">'+
+        '<h1>' + titleIoniaMason + '</h1>'+
+        '<p>Parking $5 per day</p>'+
+        '<p>Free shuttle to Riverside Park</p>'+
+        '<p><a href="' + directionsIoniaMason + '">Directions</a></p></div>';
+
+        var copyGovtCenter = '<div class="info">'+
+        '<h1>' + titleGovtCenter + '</h1>'+
+        '<p>Parking $8 per day</p>'+
+        '<p>Free shuttle to Riverside Park</p>'+
+        '<p><a href="' + directionsGovtCenter + '">Directions</a></p></div>';
+
+        var copyDevos = '<div class="info">'+
+        '<h1>' + titleDevos + '</h1>'+
+        '<p>Parking $8 per day</p>'+
+        '<p>Free shuttle to Riverside Park</p>'+
+        '<p><a href="' + directionsDevos + '">Directions</a></p></div>';
+
+        var copyLuisCampau = '<div class="info">'+
+        '<h1>' + titleLuisCampau + '</h1>'+
+        '<p>Parking $8 per day</p>'+
+        '<p>Free shuttle to Riverside Park</p>'+
+        '<p><a href="' + directionsLuisCampau + '">Directions</a></p></div>';
+
+        var infoMonroeKnapp = new google.maps.InfoWindow({
+          content: copyMonroeKnapp
         });
-        var infoMonroeGuildEntrance = new google.maps.InfoWindow({
-          content: copyMonroeGuildEntrance
+        var infoMonroeGuild = new google.maps.InfoWindow({
+          content: copyMonroeGuild
+        });
+        var infoDashLotArea9 = new google.maps.InfoWindow({
+          content: copyDashLotArea9
+        });
+        var infoScribner = new google.maps.InfoWindow({
+          content: copyScribner
+        });
+        var infoIoniaMason = new google.maps.InfoWindow({
+          content: copyIoniaMason
+        });
+        var infoGovtCenter = new google.maps.InfoWindow({
+          content: copyGovtCenter
+        });
+        var infoDevos = new google.maps.InfoWindow({
+          content: copyDevos
+        });
+        var infoLuisCampau = new google.maps.InfoWindow({
+          content: copyLuisCampau
         });
 
         /* simple markers */
-        var startMarker = new google.maps.Marker({
-          icon: RowBoatImage,
-          position: new google.maps.LatLng(43.008000, -85.673115),
-          map: map,
-          title: 'Course Start'
-        });
-        var finishMarker = new google.maps.Marker({
-          icon: RowBoatImage,
-          position: new google.maps.LatLng(42.999000, -85.673260),
-          map: map,
-          title: 'Course Finish'
-        });
         var markerMonroeGuild = new google.maps.Marker({
           icon: SUVImage,
           position: new google.maps.LatLng(43.006367, -85.668347),
           map: map,
-          title: 'Shell Cartop Parking Entrance'
+          title: titleMonroeGuild
         });
         var markerMonroeKnapp = new google.maps.Marker({
           icon: SUVImage,
           position: new google.maps.LatLng(42.99923, -85.670504),
           map: map,
-          title: 'Shell Trailer Parking Entrance'
+          title: titleMonroeKnapp
         });
-        var DashLotArea9Marker = new google.maps.Marker({
+        var markerDashLotArea9 = new google.maps.Marker({
           icon: ParkAndRideImage,
           position: new google.maps.LatLng(42.968528,-85.682175),
           map: map,
-          title: 'Dash Lot Area 9 Parking ($5/day)'
+          title: titleDashLotArea9
         });
-        var ScribnerMarker = new google.maps.Marker({
+        var markerScribner = new google.maps.Marker({
           icon: ParkAndRideImage,
           position: new google.maps.LatLng(42.968515,-85.678012),
           map: map,
-          title: 'Scribner Parking ($5/day)'
+          title: titleScribner
         });
-        var IoniaMasonMarker = new google.maps.Marker({
+        var markerIoniaMason = new google.maps.Marker({
           icon: ParkAndRideImage,
           position: new google.maps.LatLng(42.9779958,-85.6692774),
           map: map,
-          title: 'Ionia Mason Parking ($5/day)'
+          title: titleIoniaMason
         });
-        var GovtCenterParkingMarker = new google.maps.Marker({
+        var markerGovtCenter = new google.maps.Marker({
           icon: ParkAndRideImage,
           position: new google.maps.LatLng(42.9692618,-85.6715355),
           map: map,
-          title: 'Government Center Parking ($8/day)'
+          title: titleGovtCenter
         });
-        var DevosMarker = new google.maps.Marker({
+        var markerDevos = new google.maps.Marker({
           icon: ParkAndRideImage,
           position: new google.maps.LatLng(42.96916,-85.673216),
           map: map,
-          title: 'Devos Place Convention Center Parking ($8/day)'
+          title: titleDevos
         });
-        var LuisCampauMarker = new google.maps.Marker({
+        var markerLuisCampau = new google.maps.Marker({
           icon: ParkAndRideImage,
           position: new google.maps.LatLng(42.964430, -85.672573),
           map: map,
-          title: 'Luis-Campau Ramp Parking ($8/day)'
+          title: titleLuisCampau
+        });
+        var markerStart = new google.maps.Marker({
+          icon: RowBoatImage,
+          position: new google.maps.LatLng(43.008000, -85.673115),
+          map: map,
+          title: 'Course Start'
+        });
+        var markerFinish = new google.maps.Marker({
+          icon: RowBoatImage,
+          position: new google.maps.LatLng(42.999000, -85.673260),
+          map: map,
+          title: 'Course Finish'
         });
 
         /* info window listeners */
         google.maps.event.addListener(markerMonroeGuild, 'click', function() {
-          infoMonroeGuildEntrance.open(map,markerMonroeGuild);
+          infoMonroeGuild.open(map,markerMonroeGuild);
         });
         google.maps.event.addListener(markerMonroeKnapp, 'click', function() {
-          infoMonroeKnappEntrance.open(map,markerMonroeKnapp);
+          infoMonroeKnapp.open(map,markerMonroeKnapp);
+        });
+        google.maps.event.addListener(markerDashLotArea9, 'click', function() {
+          infoDashLotArea9.open(map,markerDashLotArea9);
+        });
+        google.maps.event.addListener(markerScribner, 'click', function() {
+          infoScribner.open(map,markerScribner);
+        });
+        google.maps.event.addListener(markerIoniaMason, 'click', function() {
+          infoIoniaMason.open(map,markerIoniaMason);
+        });
+        google.maps.event.addListener(markerGovtCenter, 'click', function() {
+          infoGovtCenter.open(map,markerGovtCenter);
+        });
+        google.maps.event.addListener(markerDevos, 'click', function() {
+          infoDevos.open(map,markerDevos);
+        });
+        google.maps.event.addListener(markerLuisCampau, 'click', function() {
+          infoLuisCampau.open(map,markerLuisCampau);
         });
 
       }
